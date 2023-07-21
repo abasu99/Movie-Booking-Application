@@ -1,0 +1,36 @@
+.example-card {
+    margin-top: 30%;
+    margin: 0 auto;
+    width: 70%;
+    align-items: center;
+    background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+    border-radius: 50px;
+  }
+
+  mat-card-actions{
+    margin: 0 auto;
+    display: block;
+  }
+
+  .bg-image {
+
+    background-image: url("../../../assets/movie2.jpg");
+    /* filter: blur(8px);
+    -webkit-filter: blur(8px); */
+    height: 100%;
+    
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .bg-text {
+    position: absolute;
+    top: 36%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+  }

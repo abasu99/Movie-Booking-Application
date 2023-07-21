@@ -1,0 +1,57 @@
+<!-- <app-header></app-header> -->
+<body>
+    
+
+<mat-card class="movie-card">
+    <mat-card-header style="margin: 0 auto">
+      <mat-card-title>Edit Movie</mat-card-title>
+      <mat-card-subtitle>Movie Id: {{movie.movieId}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <hr>
+            <p>
+                <mat-label>Movie Name: </mat-label>
+                <mat-form-field>
+                    <input matInput [(ngModel)]="movie.movieName" required>
+                </mat-form-field>
+            </p>
+            <p>
+                Theatre Name: 
+                <mat-form-field>
+                    <input matInput placeholder="Theatre Name" [(ngModel)]="movie.theatreName" required>
+                </mat-form-field>
+            </p>
+
+            <p>
+                Ticket Price:
+                <mat-form-field>
+                    <input type="number" matInput placeholder="Ticket Price" [(ngModel)]="movie.price" required>
+                    <span matTextPrefix>₹&nbsp;</span>
+            
+                </mat-form-field>
+            </p>
+
+            <p>
+                Total Seats: 
+                <mat-form-field>
+                    <input type="number" matInput placeholder="Total Seats" [(ngModel)]="movie.totalSeats" required>
+                </mat-form-field>
+            </p>
+
+
+            <p>
+                Available Seats: 
+                <mat-form-field>
+                    <input type="number" matInput placeholder="Available Seats" [(ngModel)]="movie.availableSeats" required>
+                </mat-form-field>
+            </p>
+
+    </mat-card-content>
+
+    <mat-card-actions style="margin: 0 auto">
+        <button mat-raised-button color="primary" (click)="updateMovieDetails()">Update
+    </button>
+
+    </mat-card-actions>
+  </mat-card>
+</body>

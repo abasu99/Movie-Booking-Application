@@ -1,0 +1,18 @@
+.ticket-card {
+    max-width: 250px;
+    height: fit-content;
+    margin:5px;
+    background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+    
+  }
+
+.container{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container>*{
+    flex: 1 1 250px;
+}
+

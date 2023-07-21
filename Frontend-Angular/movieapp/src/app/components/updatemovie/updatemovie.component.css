@@ -1,0 +1,7 @@
+.movie-card {
+    max-width: 450px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  body{background-image: url('../../../assets/hall.jpg');}

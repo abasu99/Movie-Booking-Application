@@ -1,0 +1,72 @@
+
+<mat-sidenav-container class="sidenav-container">
+
+  <mat-sidenav
+  #drawer
+  class="sidenav"
+  [ngClass]="{hidden:!(isHandset|async)!.matches}"
+  fixedInViewport="false"
+  [attr.role]="isHandset?'dialog':'navigation'"
+  [mode]="(isHandset|async)!.matches ? 'over':'side'"
+  [opened]="!(isHandset|async)!.matches">
+
+  <mat-toolbar color="primary">
+    <p *ngIf="!isLoggedIn()">Welcome Guest</p>
+    <p *ngIf="isLoggedIn()">{{welcome}}</p>
+  </mat-toolbar>
+  <mat-nav-list>
+
+    <!-- <a mat-list-item href="#">Link 1</a> -->
+
+    <a matTooltip="Log in if you are an existing user" [routerLink]="['/login']" mat-list-item *ngIf="!isLoggedIn()">Login</a><br>
+    <a matTooltip="Register if you are a new user" [routerLink]="['/register']" *ngIf="!isLoggedIn()" mat-list-item>Sign Up</a>
+
+          
+    <a matTooltip="Search movie" mat-list-item aria-label="Example icon button with a search icon" *ngIf="isLoggedIn()" (click)="openSearchDialog()">
+      <mat-icon>search</mat-icon>
+    </a>
+
+          <a matTooltip="Home page" [routerLink]="['/home']" mat-list-item *ngIf="isLoggedIn()">Home</a>
+          <a matTooltip="Booking History" [routerLink]="['/my-tickets']" mat-list-item *ngIf="isUser()">My Bookings</a>
+          <a matTooltip="View List of users" [routerLink]="['/userList']" mat-list-item *ngIf="isAdmin()">User Engagement</a>
+          <a matTooltip="Add new movie" mat-list-item *ngIf="isAdmin()" (click)="openDialog()">Add Movie</a>
+          <a matTooltip="Log out" mat-list-item *ngIf="isLoggedIn()" (click)="logout()"> Log Out </a>
+
+  </mat-nav-list>
+    
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="(isHandset|async)!.matches">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+
+      </button>
+
+      <span><img src="../../../assets/movie-app-logo.png" height="50px" width="300px" alt="app logo"></span>
+        <p style="margin-left: 20px;" *ngIf="isLoggedIn()">{{welcome}}</p>
+
+      <span class="menu-spacer"></span>
+      <!-- <a mat-list-item href="#">Link 1</a> -->
+
+      <a matTooltip="Log in if you are an existing user" [routerLink]="['/login']" mat-button *ngIf="!isLoggedIn()">Login</a>
+      <a matTooltip="Register if you are a new user" [routerLink]="['/register']" *ngIf="!isLoggedIn()" mat-button>Sign Up</a>
+
+          
+          <button matTooltip="Search movie" mat-fab color="basic" aria-label="Example icon button with a search icon" *ngIf="isLoggedIn()" (click)="openSearchDialog()">
+
+          <mat-icon>search</mat-icon>
+          </button>
+
+          <a matTooltip="Home page" [routerLink]="['/home']" mat-button *ngIf="isLoggedIn()">Home</a>
+          <a matTooltip="Booking History" [routerLink]="['/my-tickets']" mat-button *ngIf="isUser()">My Bookings</a>
+          <a matTooltip="View List of users" [routerLink]="['/userList']" mat-button *ngIf="isAdmin()">User Engagement</a>
+          <a matTooltip="Add new movie" mat-button *ngIf="isAdmin()" (click)="openDialog()">Add Movie</a>
+          <button matTooltip="Log out" mat-raised-button color="warn" *ngIf="isLoggedIn()" (click)="logout()"> Log Out </button>
+
+
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container> 

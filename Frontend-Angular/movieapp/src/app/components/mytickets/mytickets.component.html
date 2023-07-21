@@ -1,0 +1,43 @@
+<!-- <app-header></app-header> -->
+
+<h1 style="text-align: center;color: black;margin-bottom: 10px;">Here are your M-tickets</h1>
+
+<div class="container" >
+    <mat-card class="ticket-card" *ngFor="let t of dataObj">
+        <mat-card-header style="margin:0 auto">
+          <!-- <mat-card-title>{{m.movieName}}</mat-card-title> -->
+          <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+        
+        <img mat-card-image src="../../../assets/movies.png" height="100px" width="100px" alt="ticket pic">
+        </mat-card-header>
+        <mat-card-content style="margin:0 auto">
+            <!-- <div class="left"> -->
+          <p>
+            <img mat-card-image src="../../../assets/video-player.png" height="25px" width="25px"  alt="movie pic">
+            <b> {{t.movieName}}</b>
+        </p>
+
+        <p>
+            <img mat-card-image src="../../../assets/cinema-seats.png" height="25px" width="25px"  alt="seats pic">
+            <b> {{t.bookedSeats}} seats</b>
+        </p>
+
+        <p>
+            <img mat-card-image src="../../../assets/calendar.png" height="25px" width="25px"  alt="calendar pic">
+            <b> {{t.bookingDateTime|date}} </b>
+          </p>
+          <!-- </div> -->
+
+          <!-- <div class="right"> -->
+          <p>Transaction id: {{t.transactionId}}</p>
+          <p>Total Price: {{t.totalPrice| currency:'INR'}}</p>
+        <!-- </div> -->
+
+          <mat-card-actions style="margin:0 auto">
+            <img mat-card-image src="../../../assets/booked.png" height="100px" width="100px" alt="booked pic">
+          </mat-card-actions>
+          
+    
+        </mat-card-content>
+        </mat-card>
+        </div>

@@ -1,0 +1,32 @@
+.example-card {
+    margin-top: 30%;
+    margin: 0 auto;
+    width: 40%;
+    
+  }
+
+  mat-card-actions{
+    margin: 0 auto;
+  }
+
+  .bg-image {
+
+    background-image: url("../../../assets/movie1.jpg");
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+  }

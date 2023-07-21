@@ -1,0 +1,33 @@
+<div class="bg-image"></div>
+          
+          <div class="bg-text">
+          <mat-card class="example-card" >
+              
+              <mat-card-content>
+                <mat-form-field>
+                    <mat-label>UserName</mat-label>
+                    <input matInput name="userName" [(ngModel)]="jwtrequest.userName" required> 
+                    <mat-icon mat-icon matSuffix>account_circle</mat-icon>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="jwtrequest.userPassword" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                  </mat-form-field>
+
+              </mat-card-content>
+              <mat-card-actions >
+                <button mat-fab extended color="primary" style="margin:5px" (click)="loginAction()">Login</button>
+                <button mat-fab extended color="accent" [routerLink]="['/register']">Sign Up</button>
+                <br>
+                <button matTooltip="Set new password" mat-fab extended color="warn" (click)="openDialog()">Forgot Password?</button>
+                </mat-card-actions>
+            </mat-card>
+          </div>
+            
+
+
+  

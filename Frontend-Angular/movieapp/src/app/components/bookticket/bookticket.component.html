@@ -1,0 +1,90 @@
+<body>
+<mat-card class="movie-card" >
+    <mat-card-header style="margin: 0 auto; ">
+    <img mat-card-image src="../../../assets/booking.png" height="100px" width="100px"  alt="booking pic">
+      <mat-card-title><h1><b>{{movie.movieName}}</b></h1></mat-card-title>
+      <mat-card-subtitle>
+        <h2><b>Movie Id: {{movie.movieId}}</b></h2>
+    </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content >
+        <hr>
+        <p>
+            <img mat-card-image src="../../../assets/location.png" height="35px" width="35px"  alt="Theatre pic">
+             {{movie.theatreName}}
+        </p>
+
+        <p>
+            <img mat-card-image src="../../../assets/cinema-seats.png" height="35px" width="35px"  alt="Theatre pic">
+             {{movie.availableSeats}}/{{movie.totalSeats}} seats left
+        </p>
+
+        <p>
+            <mat-form-field *ngIf="!isAdmin()" >
+                <input type="number" matInput placeholder="Enter no of seats" [(ngModel)]="ticket.bookedSeats" required>
+            </mat-form-field>
+        </p>
+        
+
+        <p>
+            <mat-form-field *ngIf="!isAdmin()" >
+        
+                <input type="datetime" matInput placeholder="Booking Date" [matDatepicker]="picker" [(ngModel)]="ticket.bookingDateTime" required>
+           
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              
+        </p>
+
+        <p><b>Ticket Price: {{movie.price| currency:'INR'}}</b></p>
+        <p *ngIf="!isAdmin()"><b>Total Price: {{movie.price*ticket.bookedSeats| currency:'INR'}}</b></p>
+    </mat-card-content>
+
+    <mat-card-actions style="margin: 0 auto" *ngIf="!isAdmin()">
+        <button mat-fab extended color="primary" (click)="bookTicket()">Confirm Booking</button>
+
+       
+
+    </mat-card-actions>
+  </mat-card>
+
+  <div class="movie-container" *ngIf="isAdmin()">
+    <mat-expansion-panel>
+     <mat-expansion-panel-header>
+    
+        <mat-panel-title>Ticket Transaction Details</mat-panel-title>
+
+     </mat-expansion-panel-header>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="table-danger">
+                        <th>Transaction Id</th>
+                        <th>UserName</th>
+                        <th>Booking Date/Time</th>
+                        <th>Booked Seats</th>
+                        <th>Total Price</th>
+                 
+                    </tr>
+                </thead>
+            
+                <tbody>
+                    
+                    <tr *ngFor="let r of movie.ticketDetails">
+                        <td>{{r.transactionId}}</td>
+                        <td>{{r.userName}}</td>
+                        <td>{{r.bookingDateTime |date}}</td>
+                        <td>{{r.bookedSeats}}</td>
+                        <td>{{r.totalPrice| currency:'INR'}}</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+ 
+     </mat-expansion-panel>
+     </div>
+
+    </body>
+
+

@@ -1,0 +1,66 @@
+<button mat-icon-button style="float: right; margin: 5px;" matDialogClose>
+    <mat-icon>close</mat-icon>
+</button>
+
+    <mat-dialog-content>
+        <header><h1>Search Movie</h1></header>
+    
+    <p>
+        <mat-form-field>
+            <mat-label>Movie Name</mat-label>
+            <input matInput placeholder="RRR" [(ngModel)]="movieObj.movieName" required>
+            <mat-hint style="color: blue;">Please enter movie name to search</mat-hint>
+        </mat-form-field>
+    </p>
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+        <button mat-raised-button color="primary" (click)="searchMovie()"> Search </button>
+        <button mat-raised-button color="warn" matDialogClose> Cancel </button>
+    </mat-dialog-actions>
+
+<!-- <div *ngIf="'movieObj.movieName'===null"> -->
+    <mat-dialog-content>
+    
+        <h1 style="color: red;" *ngIf='movie===null'>Movie not found</h1>
+    <h2>{{movie.movieName}}</h2>
+    <!-- <p>Id: {{movie.movieId}}</p> -->
+
+
+
+    <p>
+        <img mat-card-image src="../../../assets/location.png" height="35px" width="35px"  alt="Theatre pic">
+         {{movie.theatreName}}
+      </p>
+
+      <p>
+        <img mat-card-image src="../../../assets/best-price.png" height="35px" width="35px"  alt="price pic">
+         {{movie.price| currency:'INR'}}
+      </p>
+      <p>
+        <img mat-card-image src="../../../assets/cinema-seats.png" height="35px" width="35px"  alt="seat pic">
+        {{movie.availableSeats}}/{{movie.totalSeats}} seats left
+
+      </p>
+
+    </mat-dialog-content>
+
+ 
+
+    <mat-dialog-actions align="center" >
+        <button matDialogClose style="margin: 5px" matTooltip="Movie info" *ngIf="isAdmin()" (click)="bookMovie(movie.movieId)" mat-fab color="primary" aria-label="Example icon button with a info icon">
+            <mat-icon>info</mat-icon>
+        </button>
+        <button matDialogClose matTooltip="Delete movie" *ngIf="isAdmin()" (click)="deleteMovie(movie.movieId)" mat-fab color="warn" aria-label="Example icon button with a delete icon">
+            <mat-icon>delete</mat-icon>
+        </button>
+
+        <button matDialogClose mat-raised-button color="accent" matTooltip="Book movie" *ngIf="!isAdmin()" (click)="bookMovie(movie.movieId)">Proceed for booking</button>
+    </mat-dialog-actions>
+
+    <!-- </div> -->
+
+    
+
+    
+

@@ -1,0 +1,58 @@
+<button mat-icon-button style="float: right; margin: 5px;" matDialogClose>
+    <mat-icon>close</mat-icon>
+</button>
+
+    <mat-dialog-content>
+        <header><h1>Add New Movie</h1></header>
+    
+    <p>
+        <mat-form-field>
+            <mat-label>Movie Id</mat-label>
+            <input type="number" matInput [(ngModel)]="movieObj.movieId" required>
+        </mat-form-field>
+    </p>
+
+    <p>
+
+        <mat-form-field>
+            <mat-label>Movie Name</mat-label>
+            <input class="movieName" matInput [(ngModel)]="movieObj.movieName" required>
+        </mat-form-field>
+    </p>
+
+    <p>
+        <mat-form-field>
+            <mat-label>Theatre Name</mat-label>
+            <input class="theatreName" matInput [(ngModel)]="movieObj.theatreName" required>
+        </mat-form-field>
+    </p>
+
+    <p>
+        <mat-form-field>
+            <mat-label>Ticket Price</mat-label>
+            <input type="number" placeholder="0" matInput [(ngModel)]="movieObj.price" required>
+            <span matTextPrefix>₹&nbsp;</span>
+    
+        </mat-form-field>
+    </p>
+
+    <p>
+        <mat-form-field>
+            <mat-label>Total Seats</mat-label>
+            <input type="number" matInput [(ngModel)]="movieObj.totalSeats" required>
+        </mat-form-field>
+    </p>
+
+    <p>
+        <mat-form-field>
+            <mat-label>Available Seats</mat-label>
+            <input type="number" matInput [(ngModel)]="movieObj.availableSeats" required>
+            <mat-hint style="color: blue;">Available seats should not be more than Total seats</mat-hint>
+        </mat-form-field>
+    </p>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="center">
+        <button mat-raised-button color="primary" (click)="addNewMovie()" matDialogClose> Add Movie </button>
+        <button mat-raised-button color="warn" matDialogClose> Cancel </button>
+    </mat-dialog-actions>
